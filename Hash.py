@@ -1,7 +1,6 @@
-#Ian Harwell 000683773
-# implemented using c950 Webinar 1 as reference (Tepe, 17 Nov. 2020)
+# implemented using c950 Webinar
 
-# Initialization  ------------------------------------------------------------------------------------------------------
+# Initialization
 
 class ChainingHashTable:
     # constructor
@@ -14,7 +13,6 @@ class ChainingHashTable:
         for i in range(initial_capacity):
             self.table.append([])
 
-    # insert function
     # inserts a new item into the hash table
     # O(1) constant average
     def insert(self, key, item):  # does both insert and update
@@ -33,9 +31,7 @@ class ChainingHashTable:
         bucket_list.append(key_value)
         return True
 
-    # search/look-up function
-    # searches for a package with matching key in the hash table
-    # returns the package if found, or None if not found
+    # returns the package if found, or 'None' if not found
     # O(1) constant average
     def search(self, key):
         # get the bucket list where this key would be
@@ -48,7 +44,6 @@ class ChainingHashTable:
                 return kv[1]  # value
             return None
 
-    # remove function
     # removes an item with matching key from the hash table
     # O(1) constant average
     def remove(self, key):

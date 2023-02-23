@@ -2,9 +2,9 @@ from Distance import *
 from Truck import *
 from Package import *
 
-# Initialization  ------------------------------------------------------------------------------------------------------
+# Initialization
 # O(1) constant
-rate = 18  # miles per hour
+rate = 18  # mph
 
 # list of times between locations
 # O(1) constant
@@ -18,32 +18,29 @@ deliveryTimesToReturnT1 = []
 deliveryTimesToReturnT2 = []
 deliveryTimesToReturnT3 = []
 
-# Time Functions -------------------------------------------------------------------------------------------------------
+# Time Functions
 # populate list of time between locations
 # 0(N) linear
 def setTimeBetweenLocationsListT1():
-    # list cleared to allow for multiple function calls
+    # clears list for repeat calls
     timeBetweenLocationsListT1.clear()
     for distance in distanceFloatListT1:
         timeBetweenLocationT1 = (distance / rate) * 60
         timeBetweenLocationsListT1.append(round(timeBetweenLocationT1))
-    # print(timeBetweenLocationsListT1)
 # 0(N) linear
 def setTimeBetweenLocationsListT2():
-    # list cleared to allow for multiple function calls
+    # clears list for repeat calls
     timeBetweenLocationsListT2.clear()
     for distance in distanceFloatListT2:
         timeBetweenLocationT2 = (distance / rate) * 60
         timeBetweenLocationsListT2.append(round(timeBetweenLocationT2))
-    # print(timeBetweenLocationsListT2)
 # 0(N) linear
 def setTimeBetweenLocationsListT3():
-    # list cleared to allow for multiple function calls
+    # clears list for repeat calls
     timeBetweenLocationsListT3.clear()
     for distance in distanceFloatListT3:
         timeBetweenLocationT3 = (distance / rate) * 60
         timeBetweenLocationsListT3.append(round(timeBetweenLocationT3))
-    # print(timeBetweenLocationsListT3)
 # combines above functions
 # 0(N) linear
 def setTimeBetweenLocationsListAllTrucks():
@@ -51,20 +48,19 @@ def setTimeBetweenLocationsListAllTrucks():
     setTimeBetweenLocationsListT2()
     setTimeBetweenLocationsListT3()
 
-# set/return time of delivery time for each package - passed into setDeliveryTimeStamp
+# sets/return time of delivery time for each package - passed into setDeliveryTimeStamp
 # O(N) linear
 def setAndReturnDeliveryTimesT1():
-    # list cleared to allow for multiple function calls
+    # clears list for repeat calls
     deliveryTimesToReturnT1.clear()
     previousSetTime = getTimeLeftHub('T1')
-    # [:-1] used to drop last time (last time = time from last location to hub)
+    # [:-1] used to remove last location to hub)
     for i in timeBetweenLocationsListT1[:-1]:
         timeToSet = (int(previousSetTime) + i)
-        # print(timeToSet)
-        # convert to string to apply proper formatting
+        # convert to string
         stringTime = str(timeToSet)
         newFormattedTime = stringTime
-        # convert to real time ex. 0866 to 0906
+        # convert to real time
         if stringTime[-2:] >= '60':
             revertedIntTime = int(stringTime)
             newIntTime = revertedIntTime + 40
@@ -74,21 +70,19 @@ def setAndReturnDeliveryTimesT1():
             newFormattedTime = '0' + stringTime
         deliveryTimesToReturnT1.append(newFormattedTime)
         previousSetTime = newFormattedTime
-    # print(deliveryTimesToReturnT1)
     return deliveryTimesToReturnT1
 # O(N) linear
 def setAndReturnDeliveryTimesT2():
-    # list cleared to allow for multiple function calls
+    # clears list for repeat calls
     deliveryTimesToReturnT2.clear()
     previousSetTime = getTimeLeftHub('T2')
-    # [:-1] used to drop last time (last time = time from last location to hub)
+    # [:-1] used to remove last location to hub)
     for i in timeBetweenLocationsListT2[:-1]:
         timeToSet = (int(previousSetTime) + i)
-        # print(timeToSet)
-        # convert to string to apply proper formatting
+        # convert to string
         stringTime = str(timeToSet)
         newFormattedTime = stringTime
-        # convert to real time ex. 0866 to 0906
+        # convert to real time
         if stringTime[-2:] >= '60':
             revertedIntTime = int(stringTime)
             newIntTime = revertedIntTime + 40
@@ -98,21 +92,19 @@ def setAndReturnDeliveryTimesT2():
             newFormattedTime = '0' + stringTime
         deliveryTimesToReturnT2.append(newFormattedTime)
         previousSetTime = newFormattedTime
-    # print(deliveryTimesToReturnT2)
     return deliveryTimesToReturnT2
 # O(N) linear
 def setAndReturnDeliveryTimesT3():
-    # list cleared to allow for multiple function calls
+    # clears list for repeat calls
     deliveryTimesToReturnT3.clear()
     previousSetTime = getTimeLeftHub('T3')
-    # [:-1] used to drop last time (last time = time from last location to hub)
+    # [:-1] used to remove last location to hub)
     for i in timeBetweenLocationsListT3[:-1]:
         timeToSet = (int(previousSetTime) + i)
-        # print(timeToSet)
-        # convert to string to apply proper formatting
+        # convert to string
         stringTime = str(timeToSet)
         newFormattedTime = stringTime
-        # convert to real time ex. 0866 to 0906
+        # convert to real time
         if stringTime[-2:] >= '60':
             revertedIntTime = int(stringTime)
             newIntTime = revertedIntTime + 40
@@ -122,10 +114,9 @@ def setAndReturnDeliveryTimesT3():
             newFormattedTime = '0' + stringTime
         deliveryTimesToReturnT3.append(newFormattedTime)
         previousSetTime = newFormattedTime
-    # print(deliveryTimesToReturnT3)
     return deliveryTimesToReturnT3
 
-# set delivery timestamp as package status
+# sets delivery timestamp as package status
 # 0(N^2) quadratic
 def setDeliveryTimeStampT1():
     deliveryTimesT1 = setAndReturnDeliveryTimesT1()

@@ -1,6 +1,6 @@
 from Self_Adjusting_Algorithms import *
 
-# Initialization  ------------------------------------------------------------------------------------------------------
+# Initialization
 # initialize truck class
 class Truck:
     # O(1) constant
@@ -19,7 +19,7 @@ locationT2 = 'At the Hub'
 locationT3 = 'At the Hub'
 timeLeftHubT1 = '0800'
 timeLeftHubT2 = '0800'
-timeLeftHubT3 = '1000'  # truck 1 is back at hub at 1000 -- truck 3 returns to hub at 1236
+timeLeftHubT3 = '1000' 
 totalMileageT1 = 0
 totalMileageT2 = 0
 totalMileageT3 = 0
@@ -33,7 +33,7 @@ truck1 = Truck(locationT1, timeLeftHubT1, totalMileageT1, totalRouteMileageT1, p
 truck2 = Truck(locationT2, timeLeftHubT2, totalMileageT2, totalRouteMileageT2, packageListT2, packageNumberT2)
 truck3 = Truck(locationT3, timeLeftHubT3, totalMileageT3, totalRouteMileageT3, packageListT3, packageNumberT3)
 
-# Truck Functions ------------------------------------------------------------------------------------------------------
+# Truck Functions
 # returns time truck left hub
 # O(1) constant
 def getTimeLeftHub(truckNumber):

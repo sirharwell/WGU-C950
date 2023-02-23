@@ -1,7 +1,7 @@
 from Hash import *
 import csv
 
-# Initialization  ------------------------------------------------------------------------------------------------------
+# Initialization
 # create package hash table
 # O(N) linear
 packageHashTable = ChainingHashTable(40)
@@ -20,8 +20,8 @@ class Package:
         self.specialNotes = specialNotes
         self.status = status
 
-# Package Functions ----------------------------------------------------------------------------------------------------
-# set package data to hash table from CSV
+# Package Functions
+# sets package data to hash table from CSV file
 # O(N) linear
 def setPackageData(fileName):
     with open(fileName) as packageFile:
@@ -49,10 +49,10 @@ def setPackageData(fileName):
             # create package object
             p = Package(pID, pAddress, pCity, pState, pZipCode, pDeadline, pWeight, pSpecialNotes, pStatus)
 
-            # set object attributes - insert data into the hash table
+            # sets object attributes - insert data into the hash table
             packageHashTable.insert(pID, p)
 
-# formatted search for all package data
+# search for all package data
 # O(N) linear
 def getPackageData():
     print('Package Data:')
@@ -73,7 +73,7 @@ def getPackageData():
               pZipCode, '| Deadline:', pDeadline, '| Weight:', pWeight, '| Special Notes:', pSpecialNotes,
               '| Status:', pStatus)
 
-# formatted search for specific package data by ID
+# search for specific package data by ID
 # O(1) constant average
 def getPackageDataByID(userInput):
     print('\nRequested Package Data: ')

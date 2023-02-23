@@ -1,7 +1,7 @@
 from Package import *
 from operator import itemgetter
 
-# Initialization  ------------------------------------------------------------------------------------------------------
+# Initialization
 # list of packages in each truck
 # packages placed based on project requirements (with consideration to optimal mileage)
 # O(1) constant
@@ -23,12 +23,12 @@ packageNumberT3 = len(packageListT3)
 # O(1) constant
 deadlineList = []
 
-# Self_Adjusting Algorithms  -------------------------------------------------------------------------------------------
+# Self_Adjusting Algorithms
 
 # builds list of delivery deadlines and sorts by earliest time
 # O(N log N) log-linear
 def getPackageDeliveryDeadlineList():
-    # list cleared to allow for multiple function calls
+    # clears list for repeat calls
     deadlineList.clear()
     for i in range(len(packageHashTable.table)):
         p = (packageHashTable.search(i + 1))
@@ -40,13 +40,13 @@ def getPackageDeliveryDeadlineList():
     return sortedDeadlineList
 
 # Self-Adjusting Algorithm #1 - Greedy Algorithm
-# setPackagesInTrucks()
+# setsPackagesInTrucks()
 # Overview: algorithm prioritizes earliest deadline times and fills up first two departing trucks (T1 and T2)
 # 1) algorithm gets list of all packages sorted by earliest deadline from getPackageDeliveryDeadlineList()
-# 2) algorithm places packages in first two trucks until they are full (# 14 package limit for equal distribution)
+# 2) algorithm places packages in first two trucks until they are full (14 package limit for equal distribution)
 # 3) algorithm places remaining packages in truck departing latest (T3)
-# 4) while placing packages, algorithm appends each package to packagesAlreadyPlaced list to prevent duplicates
-    # in event that algorithm needs to be called again (if deadlines change, if total number of packages change, etc.)
+# 4) algorithm appends each added package to packagesAlreadyPlaced list to stop duplicates from happening
+
 # O(N^2) quadratic
 def setPackagesInTrucks():
     sortedDeadlineList = getPackageDeliveryDeadlineList()
